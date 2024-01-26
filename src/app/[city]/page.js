@@ -1,6 +1,6 @@
 import './page.css';
-//import weather from '../../data/weather.json';
-//import weatherDaily from '../../data/weatherDaily.json'; 
+import weather from '../../data/weather.json';
+import weatherDaily from '../../data/weatherDaily.json'; 
 import { getWeatherDaily, getWeatherHourly } from '../services/callApiWeather';
 
 function formatearHorario(horarios){
@@ -88,8 +88,8 @@ export default async function WeatherByDay({params}) {
 
   const {city} =  params;
 
-  const weather = await getWeatherDaily(city);
-  const weatherDaily = await getWeatherHourly(city);
+  /*const weather = await getWeatherDaily(city);
+  const weatherDaily = await getWeatherHourly(city);*/
 
   const weatherByDay = weather.timelines.daily[0].values; 
   const weatherByHour = weatherDaily.timelines.hourly;
@@ -169,106 +169,35 @@ export default async function WeatherByDay({params}) {
         <section className='proximosDias'>
           <table className='tablaDias'>
             <tbody>
-              <tr>
-                <td>
-                  <span>Lunes</span>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                      <img src='gota.png'/>
-                      <span>5 %</span>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <img src='sunny.png'/>
-                  </div>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                    <span>20º</span>
-                    <span>10º</span>
-                    <img src='temperatura.png'/>
-                  </div>
-                </td>
-                <img src='redirigir.png'/>
-              </tr>
-
-              <tr>
-                <td>
-                  <span>Miércoles</span>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                      <img src='gota.png'/>
-                      <span>5 %</span>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <img src='sunny.png'/>
-                  </div>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                    <span>20º</span>
-                    <span>10º</span>
-                    <img src='temperatura.png'/>
-                  </div>
-                </td>
-                <img src='redirigir.png'/>
-              </tr>
-
-              <tr>
-                <td>
-                  <span>Lunes</span>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                      <img src='gota.png'/>
-                      <span>5 %</span>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <img src='sunny.png'/>
-                  </div>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                    <span>20º</span>
-                    <span>10º</span>
-                    <img src='temperatura.png'/>
-                  </div>
-                </td>
-                <img src='redirigir.png'/>
-              </tr>
-
-              <tr>
-                <td>
-                  <span>Lunes</span>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                      <img src='gota.png'/>
-                      <span>5 %</span>
-                  </div>
-                </td>
-                <td>
-                  <div>
-                    <img src='sunny.png'/>
-                  </div>
-                </td>
-                <td>
-                  <div style={{display:'flex'}}>
-                    <span>20º</span>
-                    <span>10º</span>
-                    <img src='temperatura.png'/>
-                  </div>
-                </td>
-                <img src='redirigir.png'/>
-              </tr>
-
+              {
+                weather.timelines.daily.map((weatherDay) => {
+                  return(
+                    <tr key={weatherDay.time}>
+                      <td>
+                        <span>{diaSemana(weatherDay.time)}</span>
+                      </td>
+                      <td>
+                        <div style={{display:'flex'}}>
+                          <img src='gota.png'/>
+                          <span>{Math.round(weatherDay.values.precipitationProbabilityAvg)} %</span>
+                        </div>
+                      </td>
+                      <td>
+                        <div>
+                          <img src={escogerImagenNubes(weatherDay.values.cloudCover)} />
+                        </div>
+                      </td>
+                      <td>
+                        <div style={{display:'flex'}}>
+                          <span>{Math.round(weatherDay.values.temperatureMax)}º</span>
+                          <span>{Math.round(weatherDay.values.temperatureMin)}º</span>
+                          <img src='temperatura.png'/>
+                        </div>
+                      </td>
+                    </tr>
+                  )
+                })
+              }
             </tbody>
           </table>
         </section>

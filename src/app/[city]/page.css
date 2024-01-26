@@ -273,13 +273,6 @@
     align-items: center;
 }
 
-.tablaDias > tbody > tr > img{
-    position: absolute;
-    right:10px; 
-    top:10px;
-    width:20px;
-}
-
 @media (min-width: 1280px) and (max-width: 1620px){
     .informacionDerecha{
         grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
