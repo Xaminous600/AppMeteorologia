@@ -1,6 +1,6 @@
 import './page.css';
-import weather from '../../data/weather.json';
-import weatherDaily from '../../data/weatherDaily.json'; 
+//import weather from '../../data/weather.json';
+//import weatherDaily from '../../data/weatherDaily.json'; 
 import { getWeatherDaily, getWeatherHourly } from '../services/callApiWeather';
 
 function formatearHorario(horarios){
@@ -18,7 +18,7 @@ function escogerImagenNubes(porcentajeNubes){
   if(porcentajeNubes < 30){
     return ('notCloudy.png')
   }
-  else if(porcentajeNubes < 60){
+  else if(porcentajeNubes >= 30){
     return ('almostCloudy.png')
   }
   else{
@@ -38,7 +38,8 @@ function escogerTextoNubes(porcentajeNubes){
   }
 }
 
-function diaSemana(fecha){
+function diaSemana(fecha, mesBool){
+  
   const dia = new Date(fecha).getDay();
   const mes = new Date(fecha).getMonth();
   const diaMes = new Date(fecha).getDate();
@@ -46,7 +47,13 @@ function diaSemana(fecha){
   const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
   const meses= ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre', 'Diciembre'];
 
-  return dias[dia] + ', ' + diaMes + ' de ' + meses[mes];
+  if(mesBool){
+    return dias[dia] + ', ' + diaMes + ' de ' + meses[mes];
+  }
+  else{
+    return dias[dia];
+  }
+ 
 }
 
 function localizacion(ubicacion){
@@ -67,7 +74,7 @@ function escogerImagenTiempo(tiempo){
       imagen: 'viento.png'
     },
     {
-      valor: tiempo.values.cloudCover,             //Día nublado
+      valor: tiempo.values.cloudBase,             //Día nublado
       imagen: 'cloudy.png'
     }
   ];
@@ -84,12 +91,38 @@ function escogerImagenTiempo(tiempo){
   }
 }
 
+function escogerImagenTabla(tiempo){
+  const temporal = [
+    {
+      valor: tiempo.values.precipitationProbabilityAvg, //Día lluvioso
+      imagen: 'lluvia.png'
+    },
+    {
+      valor: tiempo.values.windSpeedAvg,              //Día ventoso
+      imagen: 'viento.png'
+    },
+    {
+      valor: tiempo.values.cloudBaseAvg,             //Día nublado
+      imagen: 'cloudy.png'
+    }
+  ];
+
+  const temporalMayor = temporal.sort((a,b) => b.valor - a.valor)[0];
+
+  if(temporalMayor.valor > 30){
+    return temporalMayor;
+  }
+  else{
+    return {imagen: 'notCloudy.png'};
+  }
+}
+
 export default async function WeatherByDay({params}) {
 
   const {city} =  params;
 
-  /*const weather = await getWeatherDaily(city);
-  const weatherDaily = await getWeatherHourly(city);*/
+  const weather = await getWeatherDaily(city);
+  const weatherDaily = await getWeatherHourly(city);
 
   const weatherByDay = weather.timelines.daily[0].values; 
   const weatherByHour = weatherDaily.timelines.hourly;
@@ -99,7 +132,7 @@ export default async function WeatherByDay({params}) {
       <div className='cuerpo'>
         <section className='localizacion'>
           <h1>{localizacion(weather.location.name)}</h1>
-          <span>{diaSemana(weather.timelines.daily[0].time)}</span>
+          <span>{diaSemana(weather.timelines.daily[0].time, true)}</span>
         </section>
 
         <div className='informacionClima'>
@@ -174,7 +207,7 @@ export default async function WeatherByDay({params}) {
                   return(
                     <tr key={weatherDay.time}>
                       <td>
-                        <span>{diaSemana(weatherDay.time)}</span>
+                        <span>{diaSemana(weatherDay.time, false)}</span>
                       </td>
                       <td>
                         <div style={{display:'flex'}}>
@@ -184,7 +217,7 @@ export default async function WeatherByDay({params}) {
                       </td>
                       <td>
                         <div>
-                          <img src={escogerImagenNubes(weatherDay.values.cloudCover)} />
+                          <img src={escogerImagenTabla(weatherDay).imagen} />
                         </div>
                       </td>
                       <td>
