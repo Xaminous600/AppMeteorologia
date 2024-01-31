@@ -7,7 +7,8 @@ import GraficaCalidadAire from './components/GraficaCalidadAire';
 import ListaPaises from './components/ListaPaises';
 import TiempoCiudad from './components/TiempoCiudad';
 import PronosticoDias from './components/PronosticoDias';
-import MapaTemporal from './components/MapaTemporal';
+import dynamic from 'next/dynamic';
+const MapaTemporal = dynamic(() => import("./components/MapaTemporal"), { ssr: false });
 
 export default async function Home({params}) {
 
