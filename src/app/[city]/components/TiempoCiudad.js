@@ -1,4 +1,5 @@
 import InformacionCiudad from './InformacionCiudad';
+import Image from 'next/image';
 
 function localizacion(ubicacion){
     const localidad = ubicacion.split(',');
@@ -42,11 +43,11 @@ function TiempoCadaHora({temporal}){
       <div className='tiempoDiarioContenedor' key={temporal.time}>
         <span>{formatearHorario(temporal.time)}</span>
         <div>
-          <img src={escogerImagenTiempoDiario(temporal).imagen} />
+          <img src={escogerImagenTiempoDiario(temporal).imagen} alt='Imagen Tiempo Diario'/>
         </div>
         <span>{Math.round(temporal.values.temperature)}º</span>
         <div>
-          <img src='gota.png'/>
+          <img src='gota.png' alt='Imagen Tiempo Diario'/>
           <span>{Math.round(temporal.values.precipitationProbability)} %</span>
         </div>
       </div>
@@ -99,7 +100,7 @@ export default function TiempoCiudad({weather, weatherByHour, weatherByDay}){
             <div className='tiempoZonaSuperior'>
                 <div className='informacionIzquierda'>
                 <div style={{alignItems:'center', alignSelf:'center'}}>
-                    <img src= {escogerImagenSuperior(weather.timelines.daily[0]).imagen}/>
+                    <img src= {escogerImagenSuperior(weather.timelines.daily[0]).imagen} alt='Imagen Superior Ciudad'/>
                 </div>
                 
                 <section className='localizacion'>

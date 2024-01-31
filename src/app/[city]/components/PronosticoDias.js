@@ -2,6 +2,7 @@
 
 import { useContext } from "react";
 import { LenguajeContext } from "@/app/context/languajeState";
+import Image from "next/image";
 
 function DiaSemana({fecha}){
     const {initialConfiguration} = useContext(LenguajeContext);
@@ -72,7 +73,7 @@ function TiempoCadaDia({temporal}){
       <tr key={temporal.time}>
         <td>
           <div>
-            <img src={escogerImagenTabla(temporal).imagen} />
+            <img src={escogerImagenTabla(temporal).imagen} alt='Imagen Tabla' />
             <div>
               {initialConfiguration.gradosCelsius ? <span>{Math.round(temporal.values.temperatureMax) + 'º'} </span>: <span>{fahrenheit(temporal.values.temperatureMax)} <span style={{fontSize:'15px'}}>F</span></span>}
               {initialConfiguration.gradosCelsius ? <span>{Math.round(temporal.values.temperatureMin) + 'º'} </span> : <span>{fahrenheit(temporal.values.temperatureMin)} <span style={{fontSize:'12px'}}>F</span></span>}
@@ -81,7 +82,7 @@ function TiempoCadaDia({temporal}){
         </td>
         <td>
           <div>
-            <img src='gota.png'/>
+            <img src='gota.png' alt='Imagen Precipitacion'/>
             <span>{Math.round(temporal.values.precipitationProbabilityAvg)} <span style={{fontSize:'10px'}}> %</span></span>
           </div>
         </td>

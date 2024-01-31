@@ -1,5 +1,5 @@
 import './page.css'
-
+import Image from 'next/image';
 export default function Home() {
   
   return (
@@ -12,7 +12,7 @@ export default function Home() {
       <div style={{display:'flex', justifyContent:'center', alignItems:'center', width:'100%'}}>
         <div className='cards'>
           <div>
-            <img src='sateliteHome.gif'/>
+            <Image src='/sateliteHome.gif' alt='Imagen Salite Portada' width={140} height={140}/>
             <span>Consulta todo tipo de datos meteorológicos</span>
           </div>
 
@@ -20,12 +20,12 @@ export default function Home() {
             <h1>Meteorología en</h1>
             <h1>tiempo real</h1>
             <span>Datos meteorológicos en tiempo real para proporcionarte información precisa y actualizada</span>
-            <img src='portadaNube.png'/>
+            <Image src='/portadaNube.png' alt='Imagen Nube Portada' width={100} height={100}/>
           </div>
 
           <div>
             <h1>En cualquier parte del mundo...</h1>
-            <img src='globoHome.gif'/>
+            <Image src='/globoHome.gif' alt ='Imagen Globo Portada' width={160} height={160}/>
           </div>
         </div>
       </div>

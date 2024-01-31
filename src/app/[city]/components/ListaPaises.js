@@ -3,6 +3,7 @@
 import { LenguajeContext } from '@/app/context/languajeState';
 import { CitiesContext } from '@/app/context/citiesState';
 import { useContext } from 'react';
+import Image from 'next/image';
 
 function localizacion(ubicacion){
     const localidad = ubicacion.split(',');
@@ -42,7 +43,7 @@ function CiudadesFavoritas({tiempoCiudad, indice, fahrenheit}){
         {initialConfiguration.gradosCelsius ? <span>{tiempoCiudad.temperatureMax}º / {tiempoCiudad.temperatureMin} º</span> : <span>{fahrenheit(tiempoCiudad.temperatureMax)} F / {fahrenheit(tiempoCiudad.temperatureMin)} F</span>}
       </div>
       <div>
-        {indice % 2 === 0 ?  <img src='consultarPaisImpar.png'/> : <img src='consultarPaisPar.png'/>}
+        {indice % 2 === 0 ?  <img src='consultarPaisImpar.png' alt='Pais Par Lista'/> : <img src='consultarPaisPar.png' alt='Pais Impar Lista'/>}
       </div>
     </div>
     )
@@ -69,14 +70,14 @@ export default function ListaPaises({weather}){
                 </div>
                 </div>
                 <div>
-                <img src='botonAdd.png'/>
+                <img src='botonAdd.png' alt='Boton Añadir'/>
                 </div>
             </button>
 
             {
                 arrayCitiesAdded.map((item, index) =>{
                     return(
-                    <CiudadesFavoritas tiempoCiudad={item} indice={index} fahrenheit={fahrenheit}/>
+                    <CiudadesFavoritas tiempoCiudad={item} indice={index} fahrenheit={fahrenheit} key={item.id}/>
                     )
                 })
             }

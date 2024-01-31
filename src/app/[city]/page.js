@@ -1,7 +1,4 @@
 import './page.css'
-import weather from '../../data/weather.json';
-import weatherDaily from '../../data/weatherDaily.json'; 
-import airPollution from '../../data/airPollution.json';
 
 import { getWeatherDaily, getWeatherHourly, getAirQuality } from '../services/callApiWeather';
 

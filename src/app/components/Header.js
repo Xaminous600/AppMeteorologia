@@ -4,6 +4,7 @@ import Link from 'next/link';
 import './Header.css';
 import { useState, useContext } from 'react';
 import { LenguajeContext } from '../context/languajeState';
+import Image from 'next/image';
 
 function obtenerTiempo(lenguaje){
     const fecha = new Date();
@@ -34,7 +35,7 @@ export default function Header(){
             <nav className='navegacion'>
                 <div>
                     <Link href='/'>
-                        <img src='weatherLogo.png' alt='Weather Logo' style={{width:'50px', height:'50px'}}/>
+                        <Image src='/weatherLogo.png' alt='Weather Logo' width={50} height={50}/>
                     </Link>
                     <div style={{display:'flex', flexDirection:'column'}}>
                         <h1 style={{fontStyle:'italic'}}>TemporaCheck</h1>
@@ -53,7 +54,7 @@ export default function Header(){
                             
                             <Link href={`/${search}`}>
                                 <button type="submit">
-                                    <img src="lupa.png" alt="Buscar"/>
+                                    <Image src="/lupa.png" alt="Buscar" width={18} height={18}/>
                                 </button>
                             </Link>
                         </div>
