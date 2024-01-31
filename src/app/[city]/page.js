@@ -1,239 +1,47 @@
-import './page.css';
-//import weather from '../../data/weather.json';
-//import weatherDaily from '../../data/weatherDaily.json'; 
-import { getWeatherDaily, getWeatherHourly } from '../services/callApiWeather';
+import './page.css'
+import weather from '../../data/weather.json';
+import weatherDaily from '../../data/weatherDaily.json'; 
+import airPollution from '../../data/airPollution.json';
 
-function formatearHorario(horarios){
-  const horario= new Date(horarios);
-  let horas = 0;
-  let minutos = 0;
+import { getWeatherDaily, getWeatherHourly, getAirQuality } from '../services/callApiWeather';
 
-  horario.getUTCHours()/10 >= 1 ? horas= horario.getUTCHours() : horas = '0' + horario.getUTCHours() ;
-  horario.getUTCMinutes()/10 >= 1 ? minutos = horario.getUTCMinutes() : minutos = '0' + horario.getUTCMinutes() ;
+import InformacionCiudad from './components/InformacionCiudad';
+import GraficaCalidadAire from './components/GraficaCalidadAire';
+import ListaPaises from './components/ListaPaises';
+import TiempoCiudad from './components/TiempoCiudad';
+import PronosticoDias from './components/PronosticoDias';
+import MapaTemporal from './components/MapaTemporal';
 
-  return (horas + ':' + minutos);
-}
+export default async function Home({params}) {
 
-function escogerImagenNubes(porcentajeNubes){
-  if(porcentajeNubes < 30){
-    return ('notCloudy.png')
-  }
-  else if(porcentajeNubes >= 30){
-    return ('almostCloudy.png')
-  }
-  else{
-    return ('cloudy.png')
-  }
-}
-
-function escogerTextoNubes(porcentajeNubes){
-  if(porcentajeNubes < 30){
-    return 'Despejado';
-  }
-  else if(porcentajeNubes < 60){
-    return 'Parcialmente nublado';
-  }
-  else{
-    return 'Nublado';
-  }
-}
-
-function diaSemana(fecha, mesBool){
-  
-  const dia = new Date(fecha).getDay();
-  const mes = new Date(fecha).getMonth();
-  const diaMes = new Date(fecha).getDate();
-
-  const dias = ['Domingo','Lunes','Martes','Miércoles','Jueves','Viernes','Sábado'];
-  const meses= ['Enero','Febrero','Marzo','Abril','Mayo','Junio','Julio','Agosto','Septiembre','Octubre','Noviembre', 'Diciembre'];
-
-  if(mesBool){
-    return dias[dia] + ', ' + diaMes + ' de ' + meses[mes];
-  }
-  else{
-    return dias[dia];
-  }
- 
-}
-
-function localizacion(ubicacion){
-  const localidad = ubicacion.split(',');
-
-  return localidad[0] + ', ' + localidad[localidad.length-1]; //Primer y último elemento del array
-}
-
-function escogerImagenTiempo(tiempo){
-  
-  const temporal = [
-    {
-      valor: tiempo.values.precipitationProbability, //Día lluvioso
-      imagen: 'lluvia.png'
-    },
-    {
-      valor: tiempo.values.windSpeed,              //Día ventoso
-      imagen: 'viento.png'
-    },
-    {
-      valor: tiempo.values.cloudBase,             //Día nublado
-      imagen: 'cloudy.png'
-    }
-  ];
-  
-  const temporalMayor = temporal.sort((a,b) => b.valor - a.valor)[0];
-
-  if(temporalMayor.valor > 30){
-    return temporalMayor;
-  }
-  else{
-    const horarioActual = new Date(tiempo.time);
-
-    return horarioActual.getUTCHours() >= 18 || horarioActual.getUTCHours() <= 6 ? {imagen: 'luna.png'} : {imagen: 'notCloudy.png'};
-  }
-}
-
-function escogerImagenTabla(tiempo){
-  const temporal = [
-    {
-      valor: tiempo.values.precipitationProbabilityAvg, //Día lluvioso
-      imagen: 'lluvia.png'
-    },
-    {
-      valor: tiempo.values.windSpeedAvg,              //Día ventoso
-      imagen: 'viento.png'
-    },
-    {
-      valor: tiempo.values.cloudBaseAvg,             //Día nublado
-      imagen: 'cloudy.png'
-    }
-  ];
-
-  const temporalMayor = temporal.sort((a,b) => b.valor - a.valor)[0];
-
-  if(temporalMayor.valor > 30){
-    return temporalMayor;
-  }
-  else{
-    return {imagen: 'notCloudy.png'};
-  }
-}
-
-export default async function WeatherByDay({params}) {
-
-  const {city} =  params;
+  const {city} = params;
 
   const weather = await getWeatherDaily(city);
   const weatherDaily = await getWeatherHourly(city);
+  const airPollution = await getAirQuality(city);
 
   const weatherByDay = weather.timelines.daily[0].values; 
   const weatherByHour = weatherDaily.timelines.hourly;
+  const airPollutionDay = airPollution.data;;
 
   return (
     <main className='main'>
-      <div className='cuerpo'>
-        <section className='localizacion'>
-          <h1>{localizacion(weather.location.name)}</h1>
-          <span>{diaSemana(weather.timelines.daily[0].time, true)}</span>
-        </section>
+      <div className='cuerpoSuperior'>
+        <TiempoCiudad weather={weather} weatherByHour={weatherByHour} weatherByDay={weatherByDay}/>
 
-        <div className='informacionClima'>
-            <div className='informacionIzquierda'>
-              <div style={{alignItems:'center', alignSelf:'center'}}>
-                <img src= {escogerImagenNubes(weatherByDay.cloudCoverAvg)}/>
-              </div>
-              <div className='temperatura'>
-                <h1>{Math.round(weatherByDay.temperatureAvg)}º</h1>
-                <span>{escogerTextoNubes(weatherByDay.cloudCoverAvg)}</span>
-              </div>
-            </div>
-            <div className='informacionDerecha'>
-              <div>
-                <h1>{Math.round(weatherByDay.humidityAvg)} %</h1>
-                <span>Humedad</span>
-              </div>
-
-              <div>
-                <h1>{Math.round(weatherByDay.windSpeedAvg)} km/h</h1>
-                <span>Viento</span>
-              </div>
-
-              <div>
-                <h1>{Math.round(weatherByDay.precipitationProbabilityAvg)} %</h1>
-                <span>LLuvia</span>
-              </div>
-              
-              <div>
-                <h1>{Math.round(weatherByDay.visibilityAvg)} %</h1>
-                <span>Visibilidad</span>
-              </div>
-
-              <div>
-                <h1>{formatearHorario(weatherByDay.sunsetTime)}</h1>
-                <span>Atardecer</span>
-              </div>
-
-            
-              <div>
-                <h1>{formatearHorario(weatherByDay.sunriseTime)}</h1>
-                <span>Amanecer</span>
-              </div>
-            </div>
+        <div className='informacionDerechaResponsive'>
+          <div className='informacionResponsive'>
+            <InformacionCiudad temporal={weatherByDay}/>
+           </div>
         </div>
 
-        <section className='tiempoDiario'>
-          {
-            weatherByHour.slice(0,16).map((weatherHour) =>{
-                return(
-                  <div className='tiempoDiarioContenedor' key={weatherHour.time}>
-                    <span>{formatearHorario(weatherHour.time)}</span>
-                    <div>
-                      <img src={escogerImagenTiempo(weatherHour).imagen} />
-                    </div>
-                    <span>{Math.round(weatherHour.values.temperature)}º</span>
-                    <div>
-                      <img src='gota.png'/>
-                      <span>{Math.round(weatherHour.values.precipitationProbability)} %</span>
-                    </div>
-                  </div>
-                )
-            })
-          }
-        </section>
-        
-        <section className='proximosDias'>
-          <table className='tablaDias'>
-            <tbody>
-              {
-                weather.timelines.daily.map((weatherDay) => {
-                  return(
-                    <tr key={weatherDay.time}>
-                      <td>
-                        <span>{diaSemana(weatherDay.time, false)}</span>
-                      </td>
-                      <td>
-                        <div style={{display:'flex'}}>
-                          <img src='gota.png'/>
-                          <span>{Math.round(weatherDay.values.precipitationProbabilityAvg)} %</span>
-                        </div>
-                      </td>
-                      <td>
-                        <div>
-                          <img src={escogerImagenTabla(weatherDay).imagen} />
-                        </div>
-                      </td>
-                      <td>
-                        <div style={{display:'flex'}}>
-                          <span>{Math.round(weatherDay.values.temperatureMax)}º</span>
-                          <span>{Math.round(weatherDay.values.temperatureMin)}º</span>
-                          <img src='temperatura.png'/>
-                        </div>
-                      </td>
-                    </tr>
-                  )
-                })
-              }
-            </tbody>
-          </table>
-        </section>
+        <PronosticoDias weather={weather}/>
+
+        <GraficaCalidadAire airPollutionDay={airPollutionDay}/>
+
+        <MapaTemporal/>
+
+        <ListaPaises weather={weather}/>
       </div>
     </main>
   );

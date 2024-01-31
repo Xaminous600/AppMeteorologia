@@ -1,0 +1,213 @@
+{
+    "status": "ok",
+    "data": {
+      "aqi": 42,
+      "idx": 8447,
+      "attributions": [
+        {
+          "url": "http://www.juntadeandalucia.es/medioambiente/site/portalweb/",
+          "name": "Consejería de Medio Ambiente y Ordenación del Territorio :: Junta de Andalucía",
+          "logo": "Andalucia-Conserjeria-de-medio-ambiente.png"
+        },
+        {
+          "url": "http://www.eea.europa.eu/themes/air/",
+          "name": "European Environment Agency",
+          "logo": "Europe-EEA.png"
+        },
+        {
+          "url": "https://waqi.info/",
+          "name": "World Air Quality Index Project"
+        }
+      ],
+      "city": {
+        "geo": [
+          36.506015647598,
+          -6.2685723945374
+        ],
+        "name": "Avda. Marconi, Cadiz, Spain",
+        "url": "https://aqicn.org/city/spain/andalucia/cadiz/avda.-marconi",
+        "location": ""
+      },
+      "dominentpol": "pm25",
+      "iaqi": {
+        "dew": {
+          "v": 11.5
+        },
+        "h": {
+          "v": 79
+        },
+        "no2": {
+          "v": 3.7
+        },
+        "o3": {
+          "v": 32.1
+        },
+        "p": {
+          "v": 1025.5
+        },
+        "pm10": {
+          "v": 23
+        },
+        "pm25": {
+          "v": 42
+        },
+        "so2": {
+          "v": 1.1
+        },
+        "t": {
+          "v": 15
+        },
+        "w": {
+          "v": 1
+        },
+        "wg": {
+          "v": 8.2
+        }
+      },
+      "time": {
+        "s": "2024-01-28 19:00:00",
+        "tz": "+01:00",
+        "v": 1706468400,
+        "iso": "2024-01-28T19:00:00+01:00"
+      },
+      "forecast": {
+        "daily": {
+          "o3": [
+            {
+              "avg": 11,
+              "day": "2024-01-26",
+              "max": 24,
+              "min": 5
+            },
+            {
+              "avg": 25,
+              "day": "2024-01-27",
+              "max": 32,
+              "min": 16
+            },
+            {
+              "avg": 19,
+              "day": "2024-01-28",
+              "max": 29,
+              "min": 11
+            },
+            {
+              "avg": 25,
+              "day": "2024-01-29",
+              "max": 28,
+              "min": 21
+            },
+            {
+              "avg": 30,
+              "day": "2024-01-30",
+              "max": 34,
+              "min": 24
+            },
+            {
+              "avg": 31,
+              "day": "2024-01-31",
+              "max": 37,
+              "min": 25
+            },
+            {
+              "avg": 35,
+              "day": "2024-02-01",
+              "max": 35,
+              "min": 35
+            }
+          ],
+          "pm10": [
+            {
+              "avg": 19,
+              "day": "2024-01-26",
+              "max": 27,
+              "min": 9
+            },
+            {
+              "avg": 14,
+              "day": "2024-01-27",
+              "max": 18,
+              "min": 12
+            },
+            {
+              "avg": 20,
+              "day": "2024-01-28",
+              "max": 23,
+              "min": 13
+            },
+            {
+              "avg": 22,
+              "day": "2024-01-29",
+              "max": 24,
+              "min": 17
+            },
+            {
+              "avg": 22,
+              "day": "2024-01-30",
+              "max": 24,
+              "min": 18
+            },
+            {
+              "avg": 19,
+              "day": "2024-01-31",
+              "max": 24,
+              "min": 15
+            },
+            {
+              "avg": 20,
+              "day": "2024-02-01",
+              "max": 20,
+              "min": 20
+            }
+          ],
+          "pm25": [
+            {
+              "avg": 62,
+              "day": "2024-01-26",
+              "max": 77,
+              "min": 26
+            },
+            {
+              "avg": 42,
+              "day": "2024-01-27",
+              "max": 61,
+              "min": 35
+            },
+            {
+              "avg": 60,
+              "day": "2024-01-28",
+              "max": 70,
+              "min": 40
+            },
+            {
+              "avg": 49,
+              "day": "2024-01-29",
+              "max": 55,
+              "min": 34
+            },
+            {
+              "avg": 48,
+              "day": "2024-01-30",
+              "max": 53,
+              "min": 38
+            },
+            {
+              "avg": 43,
+              "day": "2024-01-31",
+              "max": 50,
+              "min": 32
+            },
+            {
+              "avg": 42,
+              "day": "2024-02-01",
+              "max": 42,
+              "min": 41
+            }
+          ]
+        }
+      },
+      "debug": {
+        "sync": "2024-01-29T04:48:53+09:00"
+      }
+    }
+  }

@@ -1,86 +1,59 @@
 .main{
     width: 100%;
-    height: 100%;
+    height: 'auto';
     display: flex;
     justify-content: center;
+    background-color: #1E1F24;
 }
 
-.cuerpo{
-    display: flex;
-    width: 90%;
-    flex-direction: column;
-}
-
-.localizacion{
-    display: flex;
-    flex-direction: column;
-    justify-content: flex-start;
-    margin-left: 100px;
-}
-
-.localizacion > h1{
-    font-size: 30px;
-    font-weight: 500;
-    color: #F9F9FB;
-}
-
-.localizacion > span{
-    font-size: 20px;
-    font-weight: 400;
-    color: #F9F9FB;
-}
-
-.informacionClima{
+.cuerpoSuperior{
+    width: 80%;
     display: grid;
+    grid-template-columns: 1fr 1fr 390px;
+    grid-template-rows: 1fr 150px 100px 300px;
+    row-gap: 20px;
+    margin-top: 50px;
+    column-gap: 20px;
+}
+
+.tiempoZona{
+    background-color: #2E2E38;
+    grid-column: 1/3;
+    border-radius: 30px;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    padding: 30px;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
-    margin-top: 10px;
-    row-gap: 40px;
-    margin-bottom: 50px;
+    height: 'auto';
+    grid-row: 1;
+}
+
+.tiempoZonaSuperior{
+    display: grid;
+    gap:40px;
+    width: 100%;
+    grid-template-columns: repeat(2, 1fr);
 }
 
 .informacionIzquierda{
     display: flex;
-    justify-content: center;
     width: 100%;
+    align-items: center;
+    gap:40px;
 }
 
 .informacionIzquierda > div > img{
-    width: 200px;
-    height: 200px;
+    width: 180px;
+    height: 180px;
     align-items: center;
-}
-
-.temperatura{
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    text-align: center;
-    margin-left: 80px;
-}
-
-.temperatura > h1{
-    font-size: 80px;
-    color:#F9F9FB;
-}
-
-.temperatura > span{
-    font-size: 25px;
-    color: #F9F9FB;
-    flex-wrap: wrap;
-}
-
-.separador{
-    background-color: white;
-    height: 100%;
-    width: 1px;
 }
 
 .informacionDerecha{
     display: grid;
     width: 100%;
-    grid-template-columns: repeat(auto-fit, minmax(350px, 1fr));
+    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
     gap:30px;
 }
 
@@ -97,7 +70,7 @@
 }
 
 .informacionDerecha > div> h1{
-    font-size: 25px;
+    font-size: 20px;
     color: #F9F9FB;
     font-weight: 500;
     letter-spacing: 1px;
@@ -105,10 +78,32 @@
 }
 
 .informacionDerecha > div> span{
-    font-size: 18px;
+    font-size: 15px;
     color: #F9F9FB;
     font-weight: 300;
     letter-spacing: 2px;
+}
+
+.localizacion{
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-start;
+}
+
+.localizacion > h1{
+    font-size: 25px;
+    font-weight: 500;
+    color: #F9F9FB;
+}
+
+.localizacion > span{
+    font-size: 15px;
+    font-weight: 400;
+    color: #F9F9FB;
+}
+
+.tiempoZonaInferior{
+    overflow-x: auto;
 }
 
 .tiempoDiario{
@@ -116,47 +111,45 @@
     overflow-x:auto;
     overflow-y: hidden;
     width: 100%;
-    height: 'auto';
     gap:10px;
     align-items: center;
-    background-color: #2E374D;
     border-radius: 40px;
-    margin-bottom: 50px;
     padding-left: 20px;
     padding-right: 20px;
-    box-shadow: 5px 3px 1px 0px rgba(0,0,0,0.75);
+    position: relative;
+    margin-top: 40px;
 }
 
 .tiempoDiario::-webkit-scrollbar{
-    height: 4px;
-    width: 4px;
-    background: gray;
+    display: none;
 }
 
-.tiempoDiario::-webkit-scrollbar-thumb {
-  background: #888; 
-}
-
-::-webkit-scrollbar-thumb:horizontal{
-    background: #000;
-    border-radius: 10px;
+.tiempoDiario::-webkit-scrollbar-thumb { 
+  display: none;
 }
 
 .tiempoDiarioContenedor{
-    gap:20px;
+    gap:6px;
     display: flex;
     flex-direction: column ;
-    padding: 20px;
+    padding: 15px;
     text-align: center;
     height: auto;
     width: 100px;
+    background-color: #CAE8EA;
+    border-radius: 30px;
+    margin-top: 30px;
+}
+
+.tiempoDiarioContenedor:hover{
+    transform: scale(1.1);
 }
 
 .tiempoDiarioContenedor > span:first-child{
-    color: #F9F9FB;
+    color: #221D24;
     letter-spacing: 1px;
-    font-weight: 300;
-    font-size: 16px;
+    font-weight: 500;
+    font-size: 14px;
     opacity: 0.9;
     top:0;
 }
@@ -167,28 +160,28 @@
 }
 
 .tiempoDiarioContenedor > div:first-of-type >img{
-    width: 30px;
-    height: 30px;
+    width: 20px;
+    height: 20px;
     margin: 0 auto;
 }
 
 .tiempoDiarioContenedor > span:nth-child(3){
     font-weight: 500;
-    font-size: 17px;
-    color: #F9F9FB;
+    font-size: 15px;
+    color: #221D24;
 }
 
 .tiempoDiarioContenedor > div:nth-child(4){
     display: flex;
     justify-content: center;
     align-items: center;
-    width: 100%;
+    width: 50px;
 }
 
 .tiempoDiarioContenedor > div:nth-child(4) > span{
-    color: #F9F9FB;
+    color: #221D24;
     letter-spacing: 1px;
-    font-weight: 300;
+    font-weight: 600;
     font-size: 12px;
     opacity: 0.9;
 }
@@ -199,18 +192,85 @@
     margin: 0 auto;
 }
 
+.informacionDerechaResponsive{
+    grid-column: 1/4;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    display: none;
+}
+
+.informacionResponsive{
+    display: grid;
+    width: 100%;
+    height: 100%;
+    grid-template-columns: repeat(auto-fill, minmax(110px, 1fr));
+    gap:30px;
+}
+
+.informacionResponsive > div{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+
+.informacionResponsive > div:hover{
+    background-color: #2D2D2D;
+    box-shadow: 0px 0px 10px 0px rgba(0,0,0,0.75);
+    border-radius: 40px;
+}
+
+.informacionResponsive > div> h1{
+    font-size: 20px;
+    color: #F9F9FB;
+    font-weight: 500;
+    letter-spacing: 1px;
+    margin-bottom: 2px;
+}
+
+.informacionResponsive > div> span{
+    font-size: 15px;
+    color: #F9F9FB;
+    font-weight: 300;
+    letter-spacing: 2px;
+}
+
+.tiempoDias{
+    grid-column: 3/4;
+    grid-row: 1/3;
+    border-radius: 30px;
+    width: 100%;
+    height: 100%;
+    padding: 30px;
+    background-color: #2E2E38;
+    text-align: center;
+    margin-top: 40px;
+}
+
+.tiempoDias > h1{
+    font-size: 30px;
+    font-weight: 400;
+    color: #F9F9FB;
+    margin-bottom: 20px;
+    letter-spacing: 1px;
+}
+
 .proximosDias{
     display: flex;
-    justify-content: center;
     width: 100%;
+    margin-top: 10px;
 }
 
 .tablaDias{
-    margin-bottom: 50px;
     border-radius: 20px;
-    width: 60%;
+    width: 100%;
     text-align: center;
-    background-color: #2E374D;
+    border-spacing:0 15px;
+}
+
+.tablaDias > tbody{
+    margin:40px
 }
 
 .tablaDias > tbody > tr:hover{
@@ -218,149 +278,396 @@
     border-radius: 20px;
 }
 
-.tablaDias > tbody > tr:nth-child(even){
-    background-color: #242c3d;
-}
-
 .tablaDias > tbody > tr{
-    position: relative;
-}
-
-.tablaDias > tbody > tr > td{
-    padding: 20px 35px 20px 35px;
-}
-
-.tablaDias > tbody > tr > td:first-child {
-    color: #F9F9FB;
-    font-weight: 400;
-    font-size: 17px;
-}
-
-.tablaDias > tbody > tr > td:nth-child(2) > div{
-    display: flex;
-    align-items: center;
-    color: #F9F9FB;
-    font-weight: 400;
-    font-size: 15px;
-    gap: 8px;
+    position: relative;    
     width: 100%;
-    justify-content: center;
+    border-radius:20px;
+    background-color:#242c3d;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 20px;
+    margin-bottom: 20px;
+}   
+
+.tablaDias > tbody > tr:last-child{
+    margin-bottom: 0px;
 }
 
-.tablaDias > tbody > tr > td:nth-child(2) > div >img{
-    width: 15px;
-    height: 15px;
-}
-
-.tablaDias > tbody > tr > td:nth-child(3) > div {
+.tablaDias > tbody > tr  > td:first-child > div{
     display: flex;
     justify-content: center;
     align-items: center;
+    gap: 30px;
 }
 
-.tablaDias > tbody > tr > td:nth-child(3) > div > img {
-    width: 20px;
-    height: 20px;
+.tablaDias > tbody > tr > td:first-child > div > div > span:nth-child(1){
+    color: white;
+    font-size: 20px;
+    margin-right: 10px;
 }
 
-.tablaDias > tbody > tr > td:nth-child(4) > div {
-    gap:20px;
-    color: #F9F9FB;
-    font-weight: 400;
+.tablaDias > tbody > tr  > td:first-child > div > div > span:nth-child(2){
+    color: white;
     font-size: 15px;
+}
+
+.tablaDias > tbody > tr  > td:first-child  > img{
+    width: 25px;
+    height: 25px;
+}
+
+.tablaDias > tbody > tr  > td:nth-child(2) > div{
     display: flex;
     justify-content: center;
     align-items: center;
+    color:white;
+    gap:5px
 }
 
-.tablaDias > tbody > tr > td:nth-child(4) > div > img {
-    width: 20px;
-    height: 20px;
+.tablaDias > tbody > tr  > td:nth-child(2) > div > img{
+    width: 12px;
+    height: 12px;
 }
 
-@media (min-width: 1280px) and (max-width: 1620px){
-    .informacionDerecha{
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        row-gap: 30px;
-        margin-top: 15px;
+.tablaDias > tbody > tr  > td:nth-child(2) > div > span{
+    font-size: 15px;
+    margin-right: 2x;
+    font-weight: 400;
+}
+
+.tablaDias > tbody > tr  > td:nth-child(3) > span:nth-child(1){
+    font-size: 16px;
+    margin-right: 4px;
+    color:white
+}
+
+.tablaDias > tbody > tr  > td:nth-child(3) > span:nth-child(2){
+    font-size: 10px;
+    color:white
+}
+
+.tiempoGrafica{
+    grid-column: 1/2;
+    grid-row: 2/4;
+    border-radius: 40px;
+    text-align: center;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    position: relative;
+    background-color: #2E2E38;
+}
+
+.tiempoGrafica > div{
+    display: flex;
+}
+
+.tiempoGrafica > div > div{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    color: white;
+}
+
+.tiempoGrafica > div > div > h1{
+    font-size: 30px;
+    font-weight: 300;
+}
+
+.tiempoGrafica > div > div > span{
+    font-size: 20px;
+    font-weight: 300;
+}
+
+.tiempoGrafica > h1:first-child{
+    font-size: 30px;
+    color:white;
+    letter-spacing: 1px;
+    padding-top: 10px;
+}
+
+.tiempoGrafica >h1:last-child{
+    font-size: 12px;
+    color:white;
+    letter-spacing: 0.2px;
+    padding: 0px 30px 20px 30px;
+}
+
+.informacionRelacionada{
+    grid-column: 2/3;
+    border-radius: 40px;
+    grid-row: 2/4;
+    position: relative;
+    height: 100%;
+    width: 100%;
+    padding: 5px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+    background-color: #2E2E38;
+}
+
+.listaPaises{
+    grid-column: 1/4;
+    grid-row: 4/4;
+    width: 100%;
+}
+
+.listaPaisesAñadidos{
+    display: flex;
+    overflow-x:auto;
+    overflow-y: hidden;
+    width: 100%;
+    gap:10px;
+    align-items: center;
+    border-radius: 40px;
+    padding-left: 20px;
+    padding-right: 20px;
+    position: relative;
+    height: 300px;
+}
+
+.listaPaisesAñadidos::-webkit-scrollbar{
+    display: none;
+}
+
+.listaPaisesAñadidos::-webkit-scrollbar-thumb { 
+  display: none;
+}
+
+.añadirPais{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 20px;
+    width: 200px;
+}
+
+.añadirPais:hover{
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.añadirPais > div:last-child{
+    position: absolute;
+    top: -0px;
+    left: 38%;
+    right: 50%;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    text-align: center;
+}
+
+.añadirPais > div:last-child > img{
+    width: 100%;
+    height: 100%;
+}
+
+.añadirPais > div:first-child{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #2E2E38;
+    border-radius: 30px;
+    border-width: 1px;
+    border-style: dashed;
+    padding: 35px;
+}
+
+.añadirPais > div > div >h1{
+    color: white;
+    font-size: 20px;
+    font-weight: 500;
+}
+
+.añadirPais > div > div >span{
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+}
+
+.listaPaisesContenedor{
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding-top: 10px;
+    width: 200px;
+    gap:10px;
+}
+
+.listaPaisesContenedor:hover{
+    opacity: 0.6;
+    transition: 0.3s;
+}
+
+.listaPaisesContenedor > div:first-child{
+    display: flex;
+    flex-direction: column;
+    text-align: center;
+    background-color: #2E2E38;
+    border-radius: 30px;
+    border-width: 1px;
+    padding: 42px;
+}
+
+.listaPaisesContenedor > div > div >h1{
+    color: white;
+    font-weight: 600;
+}
+
+.listaPaisesContenedor > div > div > h2{
+    color: white;
+    font-size: 16px;
+    font-weight: 500;
+}
+
+.listaPaisesContenedor > div > span{
+    color: white;
+    font-size: 12px;
+    font-weight: 400;
+    margin-top: 5px;
+}
+
+.listaPaisesContenedor > div:last-child{
+    position: absolute;
+    position:absolute;
+    top: -10px;
+    left: 38%;
+    right: 50%;
+    padding: 5px;
+    width: 40px;
+    height: 40px;
+    border-radius: 40px;
+    background-color: #C7E9EA;
+}
+
+.listaPaisesContenedor > div:last-child > img{
+    width: 100%;
+    height: 100%;
+}
+
+@media (max-width: 1550px) {
+
+    .informacionRelacionada{
+        display: none;
     }
+
+    .tiempoGrafica{
+        grid-column: 1/3;
+    }
+
 }
 
 @media (max-width: 1280px) {
-    .cuerpo{
-        width: 90%;
+    .cuerpoSuperior{
+        width: 95%;
+        row-gap: 20px;
+        margin-bottom: 20px;
+        grid-template-rows: 1fr;
+        grid-template-columns: 1.5fr 1fr 1fr;
     }
 
-    .tablaDias{
-        width: 100%;
-   }
+    .tiempoDiario{
+        margin-top: 0px;
+    }
+
+    .tiempoZona{
+        grid-column: 1/4;
+    }
+
+    .tiempoDias{
+        grid-column: 1/2;
+        grid-row: auto;
+        margin-top: 0px;
+    }
+
+    .tiempoGrafica{
+        grid-column: 2/4;
+    }
+
+    .proximosDias{
+        margin-top: 0px;
+    }
+
+    .informacionRelacionada{
+        grid-row: auto;
+    }
+    .listaPaises{
+        grid-row: auto;
+    }
+}
+
+@media (max-width: 900px) {
+
+    .informacionDerechaResponsive{
+        display: block;
+        background-color: #2E2E38;
+        padding: 30px;
+        grid-column: 1/4;
+    }
 
     .informacionDerecha{
-        grid-template-columns: repeat(auto-fit, minmax(150px, 1fr));
-        row-gap: 30px;
-        margin-top: 15px;
+        display: none;
+    }
+
+    .tiempoZonaSuperior{
+        grid-template-columns: repeat(1, 1fr);
     }
 
     .informacionIzquierda > div > img{
-        width: 150px;
-        height: 150px;
-        align-items: center;
-        margin-right: 25px;
+        width: 130px;
+        height: 130px;
     }
 
-    .localizacion{
-        margin-left: 50px;
-        margin-bottom: 20px;
+    .tiempoDias{
+        grid-column: 1/4;
     }
 
-    .tiempoDiarioContenedor > div:nth-child(4) > span{
-        color: #F9F9FB;
-        letter-spacing: 1px;
-        font-weight: 300;
-        font-size: 14px;
-        opacity: 0.9;
-    }
-    
-    .tiempoDiarioContenedor > div:nth-child(4) > img{
+    .tablaDias > tbody > tr > div > td:nth-child(2) > div > img{
         width: 10px;
         height: 10px;
-        margin: 0 auto;
-    }
-  }
-
-  @media (max-width: 650px) {
-    .tablaDias > tbody > tr > td{
-        padding: 15px 25px 15px 25px;
     }
     
-    .tablaDias > tbody > tr > td:first-child {
+    .tablaDias > tbody > tr > div > td:nth-child(2) > div > span{
         font-size: 12px;
-        width: 20px;
+        margin-right: 2x;
+        font-weight: 400;
     }
 
-    .tablaDias > tbody > tr > td:nth-child(2) > div{
-        font-size: 10px;
-        gap:5px;
-        width: 40px;
-    }
-    
-    .tablaDias > tbody > tr > td:nth-child(2) > div >img{
-        width: 8px;
-        height: 8px;
-    }
-    
-    .tablaDias > tbody > tr > td:nth-child(3) > div >img{
-        width: 16px;
-        height: 16px;
+    .tablaDias > tbody > tr > div > td:first-child > div{
+        gap: 25px;
     }
 
-    .tablaDias > tbody > tr > td:nth-child(4) > div {
-        gap:5px;
-        font-size: 12px;
+    .tiempoGrafica{
+        grid-column: 1/4;
+        grid-row: auto;
     }
-    
-    .tablaDias > tbody > tr > td:nth-child(4) > div > img{
-        width: 15px;
-        height: 15px;
+
+    .medicionUvResponsive{
+        grid-column: 2/3;
+        justify-content: center;
+        align-items: center;
+        padding-left: 40px;
+        padding-right: 40px;
+        padding-bottom: 10px;
+        display: flex;
     }
-  }
+
+    .medicionUvResponsive >h1{
+        margin-top: 20px;
+    }
+
+    .informacionRelacionada{
+        grid-column: 1/4;
+        height: 300px;
+        padding: 5px;
+        display: block;
+    }
+}

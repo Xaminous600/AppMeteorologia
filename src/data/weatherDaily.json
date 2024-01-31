@@ -276,7 +276,7 @@
         {
           "time": "2024-01-25T07:00:00Z",
           "values": {
-            "cloudBase": null,
+            "cloudBase": 90,
             "cloudCeiling": null,
             "cloudCover": 0,
             "dewPoint": 6.89,
@@ -319,7 +319,7 @@
             "humidity": 82.83,
             "iceAccumulation": 0,
             "iceAccumulationLwe": 0,
-            "precipitationProbability": 0,
+            "precipitationProbability": 68,
             "pressureSurfaceLevel": 1020.29,
             "rainAccumulation": 0,
             "rainAccumulationLwe": 0,
@@ -372,7 +372,7 @@
             "weatherCode": 1000,
             "windDirection": 351.84,
             "windGust": 3.64,
-            "windSpeed": 2.02
+            "windSpeed": 40.2
           }
         },
         {
@@ -786,7 +786,7 @@
         {
           "time": "2024-01-25T22:00:00Z",
           "values": {
-            "cloudBase": 11.02,
+            "cloudBase": 70.02,
             "cloudCeiling": 11.58,
             "cloudCover": 90.63,
             "dewPoint": 9.15,
@@ -1509,7 +1509,7 @@
             "humidity": 66.42,
             "iceAccumulation": 0,
             "iceAccumulationLwe": 0,
-            "precipitationProbability": 0,
+            "precipitationProbability": 67,
             "pressureSurfaceLevel": 1016.61,
             "rainAccumulation": 0,
             "rainAccumulationLwe": 0,

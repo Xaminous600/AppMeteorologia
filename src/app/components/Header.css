@@ -1,46 +1,116 @@
 .header{
-    padding: 20px;
+    padding: 20px 20px 0px 20px;
+    width: 100%;
+    display: flex;
+    justify-content: center;
 }
 
 .navegacion{
     display: flex;
-    width: 100%;
-    justify-content: space-around;
+    width: 80%;
+    justify-content: space-between;
+    gap:10px;
+    align-items: center;
 }
 
-.formulario{
+.navegacion > div{
     display: flex;
-    flex-direction: column;
-    justify-content: center;
+    gap: 10px;
+    align-items: center;
 }
 
-.formulario > form > div{
+.navegacion > div:first-child {
+    color:white;
+    font-size: 30px;
+    font-weight: 400;
+    letter-spacing: 1px;
+    gap:20px
+}
+
+.navegacion > div > form > div{
     position: relative;
-    width: 400px;
 }
 
-.formulario > form > div > input{
-    width: 100%;
-    height: 40px;
-    border-radius: 5px;
-    border: none;
-    padding: 10px;
+.navegacion > div > form > div > input{
+    padding: 5px 10px 5px 20px;
+    border-radius: 40px;
+    padding-left:35px;
+    background-color: #2E2E38;
+
 }
 
-.formulario > form > div > input:focus{
+.navegacion > div > form > div > input:focus{
     outline: none;
 }
 
-.formulario > form > div  button{
+.navegacion > div > form > div > a > button > img{
     position: absolute;
-    width: 30px;
-    height: 100%;
-    border-radius: 5px;
-    cursor: pointer;
-    border-width: 1px;
-    border-color: #0000;
-    right: 0;
+    top: 9px;
+    width: 18px;
+    height: 18px;
+    left: 7px;
 }
 
+.navegacion > div > div > select{
+    border-radius: 40px;
+    padding: 5px 10px 5px 10px;
+    background-color: #2E2E38;
+    color: white;
+    font-weight: 300;
+}
 
+.navegacion > div > div > div{
+    background-color: #2E2E38;
+    border-radius: 40px;
+    color:white;
+    padding: 8px 10px 8px 10px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
 
+.navegacion > div > div {
+    display: flex;
+    gap:10px;
+}
+
+.navegacion > div > div >div > button:first-child{
+    margin-right: 15px;
+}
+
+.seleccionMedidaTemperatura{
+    background-color: #CAE8EA;
+    border-radius: 40px;
+    padding: 0px 8px 0px 8px;
+    color: #2E2E38;
+    font-weight: 500;
+}
+
+@media (max-width: 900px) {
+    .navegacion{
+        flex-direction: column;
+    }
+    .navegacion > div:first-child {
+        margin-bottom: 20px;
+    }
+}
+
+@media(max-width: 400px){
+    .navegacion > div:nth-child(2){
+        flex-direction: column;
+        gap: 10px;
+    }
+    .navegacion > div:first-child {
+        margin-bottom: 10px;
+    }
+    .header{
+        padding-bottom: 0px;
+    }
+    .navegacion > div > form > div > input{
+        padding: 5px 10px 5px 20px;
+        border-radius: 40px;
+        padding-left:35px;
+        background-color: #2E2E38;
+    
+    }
+}

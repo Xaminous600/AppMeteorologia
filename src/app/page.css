@@ -1,3 +1,195 @@
 .main{
     width: 100%;
+    display: flex;
+    align-items: center;
+    flex-direction: column;
+    height: 100%;
+}
+
+.textoSuperior{
+    width: 50%;
+    display: flex;
+    justify-content: center;
+    margin-top: 60px;
+    flex-direction: column;
+    align-items: center;
+    margin: 0 auto;
+    text-align: center;
+}
+
+.textoSuperior > h1{
+    font-size: 72px;
+    color:white;
+    letter-spacing: 5px;
+    animation: entrarTexto 5s; 
+}
+
+.textoSuperior > span{
+    font-size: 16px;
+    color: #A0AEC0;
+    letter-spacing: 1px;
+    margin-top: 10px;
+    width: 70%;
+    animation: entrarTexto 5s; 
+}
+
+.cards{
+    margin-top: 60px;
+    width: 70%;
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(400px, 1fr));
+    justify-items: center;
+    align-items: center;
+    row-gap: 50px;
+    animation: entrarTexto 5s; 
+}
+
+.cards > div:first-child{
+    background-color: #384E5F;
+    height: 300px;
+    width: 300px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    transition: transform 1s ease-in-out;
+}
+
+.cards > div:first-child > img{
+    width: 130px;
+    height: 130px;
+    align-self: center;
+}
+
+.cards > div:first-child > span{
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+    color: white;
+}
+
+.cards > div:first-child > div > img{
+    width:  40px;
+    height: 40px;
+}
+
+.cards > div:first-child:hover{
+    transform: skewY(20deg);
+}
+
+.cards > div:nth-child(2){
+    background-color: #384E5F;
+    height: 400px;
+    width: 400px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    transition: transform 1s ease-in-out;
+    text-align: center;
+    color:white;
+}
+
+.cards > div:nth-child(2)>h1{
+    font-size: 30px;
+    font-weight: 600;
+    letter-spacing: 1px;
+}
+
+.cards > div:nth-child(2)>span{
+    font-size: 16px;
+    letter-spacing: 0.5px;
+    margin-top: 15px;
+}
+
+.cards > div:nth-child(2) > img{
+    width: 100px;
+    height: 100px;
+    margin-top: 20px;
+    animation: desplazarNube 20s infinite;
+}
+
+.cards > div:nth-child(2):hover{
+    transform: rotateX(40deg);
+}
+
+.cards > div:nth-child(3){
+    background-color: #384E5F;
+    height: 300px;
+    width: 300px;
+    border-radius: 40px;
+    display: flex;
+    flex-direction: column;
+    padding: 60px;
+    transition: transform 1s ease-in-out;
+    text-align: center;
+}
+
+.cards > div:nth-child(3) > h1{
+    font-size: 16px;
+    font-weight: 600;
+    letter-spacing: 1px;
+    color: white;
+}
+
+.cards > div:nth-child(3) > img{
+    width: 160px;
+    height: 160px;
+}
+
+.cards > div:nth-child(3):hover{
+    transform: skewX(20deg);
+}
+
+@keyframes desplazarNube {
+    0% {
+        transform: translateX(0px);
+    }
+    50% {
+        transform: translateX(200px);
+    }
+    100% {
+        transform: translateX(0px);
+    }
+}
+
+@keyframes entrarTexto {
+    0% {
+        opacity: 0;
+    }
+    50% {
+        opacity: 0.5;
+    }
+    100% {
+        opacity: 1;
+    }
+}
+
+@media (max-width: 1250px) {
+
+    .textoSuperior{
+        width: 70%;
+        margin-top: 10px;
+    }
+
+    .textoSuperior > h1{
+        font-size: 52px;
+    }
+    
+    .textoSuperior > span{
+        font-size: 14px;
+    }
+
+    .cards{
+        width: 100%;
+    }
+
+    .cards > div:nth-child(2){
+        height: 450px;
+        width: 300px;
+    }
+
+    .textoSuperior > span{
+        width: 100%;
+    }
 }
