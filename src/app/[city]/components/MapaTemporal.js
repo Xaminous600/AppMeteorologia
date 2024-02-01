@@ -9,8 +9,7 @@ export default function MapaTemporal({localizacion, API_KEY}){
     const n = 2 ^ zoom;
     const xtile = 1+ Math.round(n * ((localizacion.lon + 180) / 360))
     const ytile = 1+ Math.round(n * (1 - (Math.log(Math.tan((localizacion.lat * Math.PI)/180 ) + (1/(Math.cos((localizacion.lat*Math.PI)/180)))) / Math.PI)) / 2);
-
-    console.log(xtile, ytile);
+    
     return(
         <div className='informacionRelacionada'>
           <MapContainer center={position} zoom={zoom} touchZoom={false} dragging={false} zoomControl={false} scrollWheelZoom={false} style={{width:'100%', height:'100%', borderRadius:'40px'}}>

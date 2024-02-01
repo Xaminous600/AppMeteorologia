@@ -18,12 +18,19 @@ export default async function Home({params}) {
   const weatherDaily = await getWeatherHourly(city);
   const airPollution = await getAirQuality(city);
 
-  const weatherByDay = weather.timelines.daily[0].values; 
-  const weatherByHour = weatherDaily.timelines.hourly;
-  const airPollutionDay = airPollution.data;;
+  let weatherByHour = [];
+  let weatherByDay =  [];
+  let airPollutionDay = [];
+
+  if(weather.timelines){
+    weatherByDay = weather.timelines.daily[0].values; 
+    weatherByHour = weatherDaily.timelines.hourly;
+    airPollutionDay = airPollution.data;;
+  }
 
   return (
     <main className='main'>
+      {weather.timelines &&
       <div className='cuerpoSuperior'>
         <TiempoCiudad weather={weather} weatherByHour={weatherByHour} weatherByDay={weatherByDay}/>
 
@@ -41,6 +48,9 @@ export default async function Home({params}) {
 
         <ListaPaises weather={weather}/>
       </div>
+      }
+      {!weather.timelines &&
+        <h1 style={{fontSize:'30px', color:'white'}}>ERROR. No se ha podido encontrar la ciudad</h1>}
     </main>
   );
 }

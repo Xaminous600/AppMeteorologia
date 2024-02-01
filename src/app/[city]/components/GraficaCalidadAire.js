@@ -39,13 +39,13 @@ export default function GraficaCalidadAire({airPollutionDay}){
     
     let calidadAire = [];
 
-    if(airPollutionDay !== 'Unknown station'){
+    if(airPollutionDay !== 'Unknown station' && airPollutionDay.iaqi.pm25){
       calidadAire = nivelCalidadAire(airPollutionDay.iaqi.pm25.v, initialConfiguration.lenguaje);
     }
 
     return(
         <div className='tiempoGrafica'>
-          {airPollutionDay != 'Unknown station' && 
+          {airPollutionDay != 'Unknown station' && airPollutionDay.iaqi.pm25 &&  
             <>
             <h1>{initialConfiguration.lenguaje === 'español' ? 'Contaminación en el aire' : 'Air Quality Index'}</h1>
               <div> 
@@ -80,11 +80,12 @@ export default function GraficaCalidadAire({airPollutionDay}){
                 <h1>{initialConfiguration.lenguaje === 'español' ? 'Datos proporcionados por:' : 'Data provided by: '} {airPollutionDay.attributions[0].name}</h1>
             </>
             }
-            {airPollutionDay === 'Unknown station'&& 
+            {airPollutionDay === 'Unknown station' || !airPollutionDay.iaqi.pm25 && 
               <div style={{width:'100%', fontSize:'20px', color:'white', textAlign:'center', display:'flex', justifyContent:'center'}}>
                 <h1>{initialConfiguration.lenguaje === 'español' ? 'No se ha podido encontrar información de esta ciudad' : 'Data not found'}</h1>
               </div>
             }
+            
         </div>
     )
 }
