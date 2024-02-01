@@ -12,7 +12,3 @@ export function getAirQuality(search){
     return fetch(`https://api.waqi.info/feed/${search}/?token=${process.env.REACT_APP_API_KEY_AIQ}`)
     .then(response => response.json())
 }
-
-export function obtain(){
-    return process.env.REACT_APP_API_KEY_WEATHER;
-}

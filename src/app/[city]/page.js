@@ -37,7 +37,7 @@ export default async function Home({params}) {
 
         <GraficaCalidadAire airPollutionDay={airPollutionDay}/>
 
-        <MapaTemporal/>
+        <MapaTemporal localizacion={weather.location} API_KEY={process.env.REACT_APP_API_KEY_GEO}/>
 
         <ListaPaises weather={weather}/>
       </div>

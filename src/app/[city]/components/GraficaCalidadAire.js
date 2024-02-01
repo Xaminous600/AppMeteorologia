@@ -5,7 +5,7 @@ import { LenguajeContext } from "@/app/context/languajeState";
 
 function nivelCalidadAire(calidad, idioma){
 
-  if(calidad < 30){
+  if(calidad <= 30){
 
     return(
       {

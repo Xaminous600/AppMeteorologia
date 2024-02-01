@@ -34,7 +34,7 @@ function escogerImagenSuperior(tiempo){
       return temporalMayor;
     }
     else{
-      return {imagen: 'soleadoSuperior.png'};
+      return {imagen: 'lunaSol.png'};
     }
 }
 
