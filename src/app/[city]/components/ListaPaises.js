@@ -4,6 +4,7 @@ import { LenguajeContext } from '@/app/context/languajeState';
 import { CitiesContext } from '@/app/context/citiesState';
 import { useContext } from 'react';
 import Image from 'next/image';
+import Link from 'next/link';
 
 function localizacion(ubicacion){
     const localidad = ubicacion.split(',');
@@ -34,6 +35,7 @@ function CiudadesFavoritas({tiempoCiudad, indice, fahrenheit}){
     const {initialConfiguration} = useContext(LenguajeContext);
   
     return(
+      <Link href={`/${tiempoCiudad.city}`}>
       <div className='listaPaisesContenedor' key={tiempoCiudad.id}>
       <div>
         <div>
@@ -46,6 +48,7 @@ function CiudadesFavoritas({tiempoCiudad, indice, fahrenheit}){
         {indice % 2 === 0 ?  <img src='consultarPaisImpar.png' alt='Pais Par Lista'/> : <img src='consultarPaisPar.png' alt='Pais Impar Lista'/>}
       </div>
     </div>
+    </Link>
     )
   
 }
