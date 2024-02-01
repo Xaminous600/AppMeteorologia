@@ -15,6 +15,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <title>Tempora Check</title>
       <body>
         <LenguajeProvider>
           <CitiesProvider>

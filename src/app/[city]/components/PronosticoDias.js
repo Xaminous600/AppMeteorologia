@@ -66,8 +66,8 @@ function TiempoCadaDia({temporal}){
     const {initialConfiguration} = useContext(LenguajeContext);
 
     function fahrenheit(grados){
-      return Math.round(grados * 1.8) + 32;
-  }
+        return Math.round(grados * 1.8) + 32;
+    }
 
     return(
       <tr key={temporal.time}>

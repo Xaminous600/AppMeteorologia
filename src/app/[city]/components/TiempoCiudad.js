@@ -1,5 +1,8 @@
+'use client'
+
+import { useContext } from 'react';
 import InformacionCiudad from './InformacionCiudad';
-import Image from 'next/image';
+import { LenguajeContext } from '@/app/context/languajeState';
 
 function localizacion(ubicacion){
     const localidad = ubicacion.split(',');
@@ -38,14 +41,18 @@ function escogerImagenSuperior(tiempo){
     }
 }
 
-function TiempoCadaHora({temporal}){
+function TiempoCadaHora({temporal, gradosCelsius}){
+    function fahrenheit(grados){
+      return Math.round(grados * 1.8) + 32;
+    } 
+
     return(
       <div className='tiempoDiarioContenedor' key={temporal.time}>
         <span>{formatearHorario(temporal.time)}</span>
         <div>
           <img src={escogerImagenTiempoDiario(temporal).imagen} alt='Imagen Tiempo Diario'/>
         </div>
-        <span>{Math.round(temporal.values.temperature)}º</span>
+        <span>{gradosCelsius ? Math.round(temporal.values.temperature) + 'º' : fahrenheit(temporal.values.temperature) + ' F'}</span>
         <div>
           <img src='gota.png' alt='Imagen Tiempo Diario'/>
           <span>{Math.round(temporal.values.precipitationProbability)} %</span>
@@ -95,6 +102,8 @@ function escogerImagenTiempoDiario(tiempo){
 }
 
 export default function TiempoCiudad({weather, weatherByHour, weatherByDay}){
+    const {initialConfiguration} = useContext(LenguajeContext);
+
     return(
         <div className='tiempoZona'>
             <div className='tiempoZonaSuperior'>
@@ -118,7 +127,7 @@ export default function TiempoCiudad({weather, weatherByHour, weatherByDay}){
                 {
                 weatherByHour.slice(0,16).map((weatherHour) =>{
                     return(
-                        <TiempoCadaHora temporal={weatherHour} key={weatherHour.time}/>
+                        <TiempoCadaHora temporal={weatherHour} key={weatherHour.time} gradosCelsius = {initialConfiguration.gradosCelsius}/>
                     )
                 })
                 }
