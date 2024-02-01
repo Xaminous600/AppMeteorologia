@@ -1,40 +1,20 @@
-<<<<<<< HEAD
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app).
+## TemporaCheck
+¡Emocionado de compartir mi último proyecto personal: TemporaCheck - un rincón digital para explorar el clima en tiempo real en todo el mundo! 🌎🌦️
 
-## Getting Started
+En estas últimas semanas, he estado trabajando incansablemente en esta aplicación web totalmente responsive que nació de mi fascinación por la meteorología y para afianzar mis habilidades en el desarrollo Front End con el uso de tecnologías como React, Next.Js, Css, Html y Js. 
 
-First, run the development server:
+TemporaCheck es mi manera de conectarme con el mundo a través de sus patrones climáticos, y mi pequeña contribución para convertir la información meteorológica en algo accesible y fascinante para todos.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+## ¿Qué puedes esperar de TemporaCheck?
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+🌐 Observa el clima en tiempo real en cualquier rincón del mundo gracias al uso de 3 API que proveen de información actualizada tales como la previsión del tiempo, calidad del aire y presión a nivel del mar (Tomorrow.io, OpenWeatherMap y Aqicn).
 
-You can start editing the page by modifying `app/page.js`. The page auto-updates as you edit the file.
+🗺️ Gracias a la posibilidad de poder traducir la página en inglés y cambiar los grados a Fahrenheit, los usuarios no hispanohablantes también podrán disfrutar de la experiencia de TemporaCheck.
 
-This project uses [`next/font`](https://nextjs.org/docs/basic-features/font-optimization) to automatically optimize and load Inter, a custom Google Font.
+⚠️ ¡Guarda aquellas zonas que consultas frecuentemente, para acceder rápidamente!
 
-## Learn More
+📱 Ya sea que estés revisando las condiciones climáticas en tu teléfono mientras te desplazas o en tu ordenador, el diseño de la aplicación se ajustará perfectamente a la pantalla.
 
-To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+#¡Espero que la disfrutes tanto como yo disfruté creándola! 📱🌈❄️ 
 
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js/) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/deployment) for more details.
-=======
-# AppMeteorologia
->>>>>>> e7bf873dca00993522769b1902e76a6653a7a5d6
